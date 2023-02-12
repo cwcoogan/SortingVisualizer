@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -40,7 +41,6 @@ public class Controller implements Initializable {
 
     arr = CreateArray.createArray(max, 100);
     title.setText(arr.toString());
-
     this.displayRects();
 
   }
@@ -65,11 +65,35 @@ public class Controller implements Initializable {
     }
   }
 
-  public void sortArray() {
-      BubbleSort.sortArray(arr);
-      title.setText(arr.toString());
+  // Sorting Animation below -> may not use because have to do
+  // both compare & swap and entire algorithm here.
 
-      this.displayRects();
+//  public void sortArray() {
+//    int currentIndex = 0;
+//    AnimationTimer animationTimer = new AnimationTimer() {
+//      @Override
+//      public void handle(long now) {
+//        if (currentIndex < arr.size() - 1) {
+//          int compare = arr.get(currentIndex).compareTo(arr.get(currentIndex + 1));
+//          if (compare > 0) {
+//            Collections.swap(arr, currentIndex, currentIndex + 1);
+//            displayRects();
+//            currentIndex = 0;
+//          } else {
+//            currentIndex++;
+//          }
+//        } else {
+//          this.stop();
+//        }
+//      }
+//    };
+//    animationTimer.start();
+//  }
+
+  public void sortArray() {
+    BubbleSort.sortArray(arr);
+    title.setText(arr.toString());
+    displayRects();
   }
 
   public void inputEnter(){
